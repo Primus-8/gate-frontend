@@ -174,6 +174,13 @@ navigate("/dashboard");
         Login
       </button>
 
+<button onClick={() => navigate("/register")}>
+  New User Register
+</button>
+
+
+
+
     </div>
   );
 }
