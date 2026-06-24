@@ -195,8 +195,20 @@ function Questions() {
   const [questions, setQuestions] =
     useState([]);
 
+    const [currentIndex, setCurrentIndex] =
+  useState(0);
+
   const [selectedAnswers, setSelectedAnswers] =
     useState({});
+
+
+const [currentIndex, setCurrentIndex] =
+  useState(0);
+
+const currentQuestion =
+  questions[currentIndex];
+
+
 
   useEffect(() => {
 
@@ -342,24 +354,97 @@ function Questions() {
 
   };
 
+const currentQuestion =
+  questions[currentIndex];
+
+
+
+
+
+
+
+
+
   return (
     <div>
 
       <Navbar />
 
-      <h1>Questions</h1>
+      
 
-      {
+
+<h3>
+  Question {currentIndex + 1}
+  of {questions.length}
+</h3>
+
+<h1>Questions</h1>
+
+      {{/* {
         questions.map((question) => (
 
+          
           <div
             key={question._id}
             style={{
               border: "1px solid black",
               margin: "10px",
               padding: "10px"
-            }}
-          >
+            }} */}}
+          
+
+
+
+
+
+{
+  currentQuestion && (
+
+    <div
+      style={{
+        border: "1px solid black",
+        margin: "10px",
+        padding: "10px"
+      }}
+    >
+
+      <h3>
+        {currentQuestion.questionText}
+      </h3>
+
+    </div>
+
+  )
+}
+
+
+
+
+
+
+
+
+
+
+            <button
+  disabled={currentIndex === 0}
+  onClick={() =>
+    setCurrentIndex(currentIndex - 1)
+  }
+>
+  Previous
+</button>
+
+<button
+  disabled={
+    currentIndex === questions.length - 1
+  }
+  onClick={() =>
+    setCurrentIndex(currentIndex + 1)
+  }
+>
+  Next
+</button>
 
             <h3>
               {question.questionText}
@@ -428,6 +513,7 @@ function Questions() {
 Explanation:
 ${question.explanation || "No explanation available"}`
 );
+
 
                 } else {
 
