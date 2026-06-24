@@ -375,13 +375,23 @@ function Dashboard() {
         }}
       >
 
-        <h1>
-          Dashboard
-        </h1>
+        <h1
+  style={{
+    color: "#2563eb",
+    marginBottom: "10px"
+  }}
+>
+  GATE Mechanical Dashboard
+</h1>
 
-        <p>
-          Welcome to GATE Mechanical Platform
-        </p>
+<p
+  style={{
+    color: "#666",
+    fontSize: "18px"
+  }}
+>
+  Prepare smarter. Track faster. Crack GATE.
+</p>
 
         <div
           style={{
@@ -408,7 +418,7 @@ function Dashboard() {
                 cursor: "pointer"
               }}
             >
-              <h3>Subjects</h3>
+              <h3> 📚Subjects</h3>
             </div>
           </Link>
 
@@ -427,7 +437,7 @@ function Dashboard() {
                 cursor: "pointer"
               }}
             >
-              <h3>Topics</h3>
+              <h3>📖Topics</h3>
             </div>
           </Link>
 
@@ -446,7 +456,7 @@ function Dashboard() {
                 cursor: "pointer"
               }}
             >
-              <h3>Questions</h3>
+              <h3>❓Questions</h3>
             </div>
           </Link>
 
@@ -467,7 +477,7 @@ function Dashboard() {
                     cursor: "pointer"
                   }}
                 >
-                  <h3>Add Subject</h3>
+                  <h3>➕Add Subject</h3>
                 </div>
               </Link>
 

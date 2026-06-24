@@ -1,170 +1,107 @@
-// import { Link } from "react-router-dom";
-
-// function Navbar() {
-//   return (
-//     <div>
-//       <h2>GATE Mechanical</h2>
-
-//       <hr />
-
-//       <Link to="/dashboard">Dashboard</Link>
-
-//       <br /><br />
-
-//       <Link to="/subjects">Subjects</Link>
-
-//       <br /><br />
-
-// <Link to="/questions">
-//   Questions
-// </Link>
-
-// <br /><br />
-
-
-// <Link to="/topics">
-//   Topics
-// </Link>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//       <button
-//         onClick={() => {
-//           localStorage.removeItem("token");
-//           window.location.href = "/";
-//         }}
-//       >
-//         Logout
-//       </button>
-//     </div>
-//   );
-// }
-
-// export default Navbar;
-
-
-
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  return (
-    <div
+
+const navigate = useNavigate();
+
+return (
+<div
+style={{
+position: "sticky",
+top: 0,
+zIndex: 1000,
+background: "#1e40af",
+padding: "15px 25px",
+display: "flex",
+justifyContent: "space-between",
+alignItems: "center",
+flexWrap: "wrap",
+boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
+}}
+>
+
+```
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "15px"
+    }}
+  >
+
+    <button
+      className="back-btn"
+      onClick={() => navigate(-1)}
+    >
+      ← Back
+    </button>
+
+    <h2
       style={{
-        backgroundColor: "#1f2937",
-        padding: "15px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        flexWrap: "wrap"
+        color: "white",
+        margin: 0
       }}
     >
-      <h2
-        style={{
-          color: "white",
-          margin: "0"
-        }}
-      >
-        GATE Mechanical
-      </h2>
+      GATE Mechanical
+    </h2>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "15px",
-          alignItems: "center",
-          flexWrap: "wrap"
-        }}
-      >
-        <Link
-          to="/dashboard"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Dashboard
-        </Link>
+  </div>
 
-        <Link
-          to="/subjects"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Subjects
-        </Link>
+  <div
+    style={{
+      display: "flex",
+      gap: "15px",
+      flexWrap: "wrap",
+      alignItems: "center"
+    }}
+  >
 
-        <Link
-          to="/topics"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Topics
-        </Link>
+    <Link
+      to="/dashboard"
+      style={{ color: "white" }}
+    >
+      Dashboard
+    </Link>
 
-        <Link
-          to="/questions"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Questions
-        </Link>
+    <Link
+      to="/subjects"
+      style={{ color: "white" }}
+    >
+      Subjects
+    </Link>
 
-        <button
-          onClick={() => {
-            localStorage.removeItem("token");
-            window.location.href = "/";
-          }}
-          style={{
-            padding: "8px 15px",
-            cursor: "pointer"
-          }}
-        >
-          Logout
-        </button>
-      </div>
-    </div>
-  );
+    <Link
+      to="/topics"
+      style={{ color: "white" }}
+    >
+      Topics
+    </Link>
+
+    <Link
+      to="/questions"
+      style={{ color: "white" }}
+    >
+      Questions
+    </Link>
+
+    <button
+      onClick={() => {
+        localStorage.clear();
+        window.location.href = "/";
+      }}
+      style={{
+        background: "#dc2626"
+      }}
+    >
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+
+);
 }
 
 export default Navbar;
