@@ -358,6 +358,13 @@ function Questions() {
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [wrongCount, setWrongCount] = useState(0);
+  const [answeredQuestions, setAnsweredQuestions] = useState({});
+
+
+
+
 
   const currentQuestion = questions[currentIndex];
 
@@ -518,6 +525,27 @@ function Questions() {
 
       <h1>Questions</h1>
 
+<div
+  style={{
+    marginBottom: "20px",
+    padding: "10px",
+    border: "1px solid #ccc"
+  }}
+>
+  <h3>Score Board</h3>
+
+  <p>Correct: {correctCount}</p>
+
+  <p>Wrong: {wrongCount}</p>
+
+  <p>Score: {correctCount}</p>
+</div>
+
+
+
+
+
+
       {
         questions.length > 0 && (
           <h3>
@@ -596,42 +624,69 @@ function Questions() {
             <button
               onClick={() => {
 
-                const selected =
-                  selectedAnswers[currentQuestion._id];
+  const selected =
+  selectedAnswers[currentQuestion._id];
 
-                const correct =
-                  currentQuestion.correctAnswer[0];
+const correct =
+  currentQuestion.correctAnswer[0];
 
-                if (!selected) {
+if (!selected) {
 
-                  alert(
-                    "Please select an answer first"
-                  );
+  alert(
+    "Please select an answer first"
+  );
 
-                  return;
-                }
+  return;
+}
 
-                if (selected === correct) {
+if (
+  !answeredQuestions[
+    currentQuestion._id
+  ]
+) {
 
-                  alert(
-                    `✅ Correct Answer
+  if (selected === correct) {
+
+    setCorrectCount(
+      (prev) => prev + 1
+    );
+
+  } else {
+
+    setWrongCount(
+      (prev) => prev + 1
+    );
+
+  }
+
+  setAnsweredQuestions({
+    ...answeredQuestions,
+    [currentQuestion._id]: true
+  });
+
+}
+
+if (selected === correct) {
+
+  alert(
+    `✅ Correct Answer
 
 Explanation:
 ${currentQuestion.explanation || "No explanation available"}`
-                  );
+  );
 
-                } else {
+} else {
 
-                  alert(
-                    `❌ Wrong Answer
+  alert(
+    `❌ Wrong Answer
 
 Correct Answer: ${correct}
 
 Explanation:
 ${currentQuestion.explanation || "No explanation available"}`
-                  );
+  );
 
-                }
+} 
 
               }}
             >
