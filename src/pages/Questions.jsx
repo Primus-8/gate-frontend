@@ -357,6 +357,9 @@ function Questions() {
 
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
+const [searchTerm, setSearchTerm] =
+  useState("");
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
@@ -369,7 +372,15 @@ const [finalScore, setFinalScore] = useState(0);
 
 
 
-  const currentQuestion = questions[currentIndex];
+  const currentQuestion = filterQuestions[currentIndex];
+  const filteredQuestions =
+  questions.filter((question) =>
+    question.questionText
+      .toLowerCase()
+      .includes(
+        searchTerm.toLowerCase()
+      )
+  );
 
   useEffect(() => {
 
@@ -503,7 +514,7 @@ const [finalScore, setFinalScore] = useState(0);
 
       if (
         currentIndex > 0 &&
-        currentIndex >= questions.length - 1
+        currentIndex >= filteredQuestions.length - 1
       ) {
         setCurrentIndex(currentIndex - 1);
       }
@@ -532,7 +543,7 @@ if (showResult) {
       <h1>Mock Test Result</h1>
 
       <h2>
-        Total Questions: {questions.length}
+        Total Questions: {filteredQuestions.length}
       </h2>
 
       <h2>
@@ -560,6 +571,20 @@ if (showResult) {
       <Navbar />
 
       <h1>Questions</h1>
+
+<input
+  type="text"
+  placeholder="Search Question..."
+  value={searchTerm}
+  onChange={(e) =>
+    setSearchTerm(e.target.value)
+  }
+  style={{
+    marginBottom: "20px"
+  }}
+/>
+
+
 
 <div
   style={{
@@ -593,11 +618,11 @@ if (showResult) {
 
 
       {
-        questions.length > 0 && (
+        filteredQuestions.length > 0 && (
           <h3>
             Question {currentIndex + 1}
             {" "}of{" "}
-            {questions.length}
+            {filteredQuestions.length}
           </h3>
         )
       }
