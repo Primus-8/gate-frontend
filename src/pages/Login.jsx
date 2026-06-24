@@ -117,7 +117,7 @@ if (
 >
   {
     loading
-      ? "Just wait Darling ..."
+      ? "⏳ Just wait Darling ..."
       : "Login"
   }
 
