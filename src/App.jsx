@@ -215,7 +215,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-
+import AdminRoute from "./components/AdminRoute";
 import Subjects from "./pages/Subjects";
 import Questions from "./pages/Questions";
 import AddQuestion from "./pages/AddQuestion";
@@ -224,6 +224,54 @@ import AddTopic from "./pages/AddTopic";
 import Topics from "./pages/Topics";
 
 import Register from "./pages/Register";
+import StudentDashboard from "./pages/StudentDashboard";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -356,6 +404,99 @@ function App() {
 
 <Route path="/register" element={<Register />} />
 
+<Route
+  path="/student-dashboard"
+  element={
+    <ProtectedRoute>
+      <StudentDashboard />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/add-subject"
+  element={
+    <AdminRoute>
+      <AddSubject />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/add-topic"
+  element={
+    <AdminRoute>
+      <AddTopic />
+    </AdminRoute>
+  }
+/>
+
+
+<Route
+  path="/add-question"
+  element={
+    <AdminRoute>
+      <AddQuestion />
+    </AdminRoute>
+  }
+/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -433,66 +574,6 @@ function App() {
 
 
       </Routes>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </BrowserRouter>

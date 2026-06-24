@@ -29,12 +29,13 @@ function Register() {
 
     } catch (error) {
 
-      alert(
-        error.response?.data?.message ||
-        "Registration Failed"
-      );
+  console.log(error);
 
-    }
+  alert(
+    JSON.stringify(error.response?.data)
+  );
+
+}
   };
 
   return (
