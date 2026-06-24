@@ -43,6 +43,8 @@ function AddQuestion() {
 
   const [correctAnswer, setCorrectAnswer] =
     useState("");
+    const [explanation, setExplanation] =
+  useState("");
 
 
 
@@ -95,7 +97,8 @@ const handleSave = async () => {
 
           correctAnswer: [
             correctAnswer
-          ]
+          ],
+          explanation
         },
         {
           headers: {
@@ -214,6 +217,20 @@ const handleSave = async () => {
       />
 
       <br /><br />
+
+
+<br /><br />
+
+<textarea
+  placeholder="Explanation"
+  value={explanation}
+  onChange={(e) =>
+    setExplanation(e.target.value)
+  }
+  rows="5"
+  cols="50"
+/>
+
 
       <button onClick={handleSave}>
         Save Question
