@@ -622,16 +622,24 @@ if (showResult) {
 
           
           <div
-            style={{
-              border: "1px solid black",
-              margin: "10px",
-              padding: "10px"
-            }}
+           style={{
+  background: "white",
+  borderRadius: "18px",
+  padding: "25px",
+  boxShadow:
+    "0 8px 25px rgba(0,0,0,0.08)",
+  marginTop: "20px"
+}}
           >
 
-            <h3>
-              {currentQuestion.questionText}
-            </h3>
+            <h2
+  style={{
+    marginBottom: "20px",
+    color: "#1e3a8a"
+  }}
+>
+  {currentQuestion.questionText}
+</h2>
 
             <p>
               Type: {currentQuestion.questionType}
@@ -673,6 +681,16 @@ if (showResult) {
 
                   <strong>
                     {option.key}.
+                    <div
+  key={option.key}
+  style={{
+    padding: "12px",
+    border: "1px solid #ddd",
+    borderRadius: "10px",
+    marginBottom: "10px",
+    background: "#f9fafb"
+  }}
+></div>
                   </strong>{" "}
                   {option.text}
 
