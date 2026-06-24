@@ -422,12 +422,21 @@ function Questions() {
 
                 if (selected === correct) {
 
-                  alert("✅ Correct Answer");
+                  alert(
+  `✅ Correct Answer
+
+Explanation:
+${question.explanation || "No explanation available"}`
+);
 
                 } else {
 
                   alert(
-                    `❌ Wrong Answer\nCorrect Answer: ${correct}`
+                    `❌ Wrong Answer\nCorrect Answer: ${correct}
+
+
+                    Explanation:
+${question.explanation || "No explanation available"}`
                   );
 
                 }
