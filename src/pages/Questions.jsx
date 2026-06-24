@@ -1,191 +1,3 @@
-// import { useEffect, useState } from "react";
-// import api from "../api/axios";
-// import Navbar from "../components/Navbar";
-
-// function Questions() {
-
-//   const [questions, setQuestions] =
-//     useState([]);
-
-//   useEffect(() => {
-
-//     const fetchQuestions =
-//       async () => {
-
-//         try {
-
-//           const token =
-//             localStorage.getItem("token");
-
-//           const response =
-//             await api.get(
-//               "/questions",
-//               {
-//                 headers: {
-//                   Authorization:
-//                     `Bearer ${token}`
-//                 }
-//               }
-//             );
-
-//           setQuestions(
-//             response.data.questions
-//           );
-
-//         } catch (error) {
-
-//           console.log(error);
-
-//         }
-
-//       };
-
-//     fetchQuestions();
-
-//   }, []);
-
-//   return (
-//     <div>
-
-//       <Navbar />
-
-//       <h1>Questions</h1>
-
-//       {
-//         questions.map((question) => (
-
-//           <div
-//             key={question._id}
-//             style={{
-//               border:
-//                 "1px solid black",
-//               margin: "10px",
-//               padding: "10px"
-//             }}
-//           >
-
-//             <h3>
-//               {question.questionText}
-//             </h3>
-//  <p>
-//         Type: {question.questionType}
-//       </p>
-
-//       <p>
-//         Difficulty: {question.difficulty}
-//       </p>
-
-//       <p>
-//         Marks: {question.marks}
-//       </p>
-
-
-
-
-
-
-
-
-
-
-
-//           </div>
-
-//         ))
-//       }
-
-//     </div>
-//   );
-// }
-
-// export default Questions;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 
-
-
-
-
-
-
-
-// 
-
-
-
-
-
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import Navbar from "../components/Navbar";
@@ -195,20 +7,17 @@ function Questions() {
   const [questions, setQuestions] =
     useState([]);
 
-    const [currentIndex, setCurrentIndex] =
+  const [currentIndex, setCurrentIndex] =
   useState(0);
 
   const [selectedAnswers, setSelectedAnswers] =
     useState({});
 
-
-const [currentIndex, setCurrentIndex] =
+  const [currentIndex, setCurrentIndex] =
   useState(0);
 
-const currentQuestion =
-  questions[currentIndex];
-
-
+  const currentQuestion = questions[currentIndex];
+  
 
   useEffect(() => {
 
@@ -357,21 +166,10 @@ const currentQuestion =
 const currentQuestion =
   questions[currentIndex];
 
-
-
-
-
-
-
-
-
   return (
     <div>
 
       <Navbar />
-
-      
-
 
 <h3>
   Question {currentIndex + 1}
@@ -380,8 +178,9 @@ const currentQuestion =
 
 <h1>Questions</h1>
 
-      {{/* {
-        questions.map((question) => (
+      {
+         currentQuestion && (
+
 
           
           <div
@@ -390,38 +189,15 @@ const currentQuestion =
               border: "1px solid black",
               margin: "10px",
               padding: "10px"
-            }} */}}
-          
+            }}
+          >
 
 
-
-
-
-{
-  currentQuestion && (
-
-    <div
-      style={{
-        border: "1px solid black",
-        margin: "10px",
-        padding: "10px"
-      }}
-    >
-
-      <h3>
+<h3>
         {currentQuestion.questionText}
       </h3>
 
-    </div>
-
-  )
-}
-
-
-
-
-
-
+    
 
 
 
@@ -514,11 +290,10 @@ Explanation:
 ${question.explanation || "No explanation available"}`
 );
 
-
                 } else {
 
                   alert(
-                    `❌ Wrong Answer\nCorrect Answer: ${correct}
+                    `Wrong Answer\nCorrect Answer: ${correct}
 
 
                     Explanation:
@@ -558,7 +333,7 @@ ${question.explanation || "No explanation available"}`
 
           </div>
 
-        ))
+        )
       }
 
     </div>
