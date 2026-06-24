@@ -361,7 +361,10 @@ function Questions() {
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState({});
-
+const [testStarted, setTestStarted] = useState(false);
+const [testSubmitted, setTestSubmitted] = useState(false);
+const [showResult, setShowResult] = useState(false);
+const [finalScore, setFinalScore] = useState(0);
 
 
 
@@ -518,6 +521,39 @@ function Questions() {
 
   };
 
+
+
+if (showResult) {
+  return (
+    <div>
+
+      <Navbar />
+
+      <h1>Mock Test Result</h1>
+
+      <h2>
+        Total Questions: {questions.length}
+      </h2>
+
+      <h2>
+        Correct: {correctCount}
+      </h2>
+
+      <h2>
+        Wrong: {wrongCount}
+      </h2>
+
+      <h2>
+        Score:
+        {" "}
+        {finalScore}%
+      </h2>
+
+    </div>
+  );
+}
+
+
   return (
     <div>
 
@@ -541,7 +577,17 @@ function Questions() {
   <p>Score: {correctCount}</p>
 </div>
 
-
+{
+  !testStarted && (
+    <button
+      onClick={() => {
+        setTestStarted(true);
+      }}
+    >
+      Start Mock Test
+    </button>
+  )
+}
 
 
 
@@ -556,9 +602,25 @@ function Questions() {
         )
       }
 
+
+
+
+
+
+
       {
         currentQuestion && (
 
+
+
+
+
+
+
+
+
+
+          
           <div
             style={{
               border: "1px solid black",
@@ -694,7 +756,37 @@ ${currentQuestion.explanation || "No explanation available"}`
             </button>
 
             <br />
-            <br />
+<br />
+
+{
+  testStarted &&
+  !testSubmitted && (
+
+    <button
+      onClick={() => {
+
+        const score =
+          Math.round(
+            (
+              correctCount /
+              questions.length
+            ) * 100
+          );
+
+        setFinalScore(score);
+
+        setTestSubmitted(true);
+
+        setShowResult(true);
+
+      }}
+    >
+      Submit Test
+    </button>
+
+  )
+}
+      
 
             <button
               disabled={currentIndex === 0}
