@@ -9,12 +9,12 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+const [loading, setLoading] = useState(false);
   const handleLogin = async () => {
 
     try {
 
-      
+  setLoading(true);    
 
 const response = await api.post(
   "/auth/login",
@@ -72,6 +72,9 @@ if (
 
     } catch (error) {
 
+      setLoading(false);
+
+
       alert(
         error.response?.data?.message ||
         error.message ||
@@ -107,8 +110,17 @@ if (
 
       <br /><br />
 
-      <button onClick={handleLogin}>
-        Login
+      <button 
+      
+      onClick={handleLogin}
+  disabled={loading}
+>
+  {
+    loading
+      ? "Just wait Darling ..."
+      : "Login"
+  }
+
       </button>
 
 <button onClick={() => navigate("/register")}>
