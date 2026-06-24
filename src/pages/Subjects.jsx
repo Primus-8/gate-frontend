@@ -3,9 +3,11 @@ import api from "../api/axios";
 import Navbar from "../components/Navbar";
 
 function Subjects() {
-
+const [searchTerm, setSearchTerm] =
+  useState("");
   const [subjects, setSubjects] = useState([]);
-
+const [selectedSubject, setSelectedSubject] =
+  useState("");
   useEffect(() => {
 
     const fetchSubjects = async () => {
@@ -25,6 +27,12 @@ function Subjects() {
               }
             }
           );
+
+
+          
+
+
+
 
 
           console.log("API Response:", response.data);
